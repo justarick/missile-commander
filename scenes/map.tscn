@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://beab64fh6gb5o"]
+
+[ext_resource type="PackedScene" uid="uid://cqb6o33cly8f1" path="res://prefabs/missile_handler.tscn" id="1_2tpmd"]
+
+[node name="Map" type="Node2D"]
+
+[node name="MissileHandler" parent="." instance=ExtResource("1_2tpmd")]
+position = Vector2(640, 720)

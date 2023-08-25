@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://chhgxji2ibi3"]
+
+[ext_resource type="Script" path="res://scripts/trail_effect.gd" id="1_24t2b"]
+
+[node name="TrailEffect" type="Line2D"]
+top_level = true
+width = 2.0
+begin_cap_mode = 1
+end_cap_mode = 1
+script = ExtResource("1_24t2b")
