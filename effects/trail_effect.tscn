@@ -1,10 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://chhgxji2ibi3"]
+[gd_scene load_steps=2 format=3 uid="uid://233ulb7vsepv"]
 
-[ext_resource type="Script" path="res://scripts/trail_effect.gd" id="1_24t2b"]
+[ext_resource type="Script" path="res://effects/trail_effect.gd" id="1_yowvn"]
 
 [node name="TrailEffect" type="Line2D"]
-top_level = true
 width = 2.0
 begin_cap_mode = 1
 end_cap_mode = 1
-script = ExtResource("1_24t2b")
+script = ExtResource("1_yowvn")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(2.38419e-07, 2.38419e-07)
+scale = Vector2(0.4, 0.4)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_screen_exited"]

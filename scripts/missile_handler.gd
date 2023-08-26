@@ -5,7 +5,7 @@ extends Node2D
 @onready var missile_scene : PackedScene = preload("res://prefabs/missile.tscn")
 @onready var friendly_missile_img : CompressedTexture2D = preload("res://assets/images/missile.png")
 @onready var hostile_missile_img : CompressedTexture2D = preload("res://assets/images/enemy_missile.png")
-@onready var marker : Marker2D = $Marker
+@onready var marker_position : Vector2 = $Marker.global_position
 @onready var screen_size : Vector2 = get_viewport_rect().size
 
 
@@ -23,15 +23,16 @@ func _on_hostile_missile_countdown_timeout():
 
 func spawn_friendly_missile():
 	var missile : Area2D = missile_scene.instantiate()
-	var spawn_point : Vector2 = marker.global_position
-	var direction : Vector2 = get_global_mouse_position() - marker.global_position
+	var spawn_point : Vector2 = marker_position
+	var direction : Vector2 = get_global_mouse_position() - marker_position
 	
 	direction = direction.normalized()
 	
-	main_scene.add_child(missile)
-	
 	missile.global_position = spawn_point
 	missile.direction = direction
+	missile.is_friendly = true
+	
+	main_scene.add_child(missile)
 
 
 func spawn_enemy_missile():
@@ -45,7 +46,8 @@ func spawn_enemy_missile():
 	direction.y = screen_size.y
 	direction = direction.normalized()
 	
-	main_scene.add_child(missile)
-	
 	missile.global_position = spawn_point
 	missile.direction = direction
+	missile.is_friendly = false
+	
+	main_scene.add_child(missile)
