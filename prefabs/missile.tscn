@@ -7,11 +7,16 @@
 [node name="Missile" type="Area2D"]
 script = ExtResource("1_q72dk")
 
-[node name="CollisionShape" type="CollisionShape2D" parent="."]
+[node name="CollisionBox" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_t1h61")
 
-[node name="VisibleOnScreenNotifier" type="VisibleOnScreenNotifier2D" parent="."]
+[node name="VisibilityNotifyer" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(2.38419e-07, 2.38419e-07)
 scale = Vector2(0.4, 0.4)
 
-[connection signal="screen_exited" from="VisibleOnScreenNotifier" to="." method="_on_screen_exited"]
+[node name="TrailEffect" type="Line2D" parent="."]
+top_level = true
+width = 2.0
+joint_mode = 1
+
+[connection signal="screen_exited" from="VisibilityNotifyer" to="." method="_on_screen_exited"]
